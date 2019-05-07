@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<!--
+Created using JS Bin
+http://jsbin.com
+
+Copyright (c) 2019 by bucsip (http://jsbin.com/sotohis/6/edit)
+
+Released under the MIT license: http://jsbin.mit-license.org
+-->
+<meta name="robots" content="noindex">
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>JS Bin</title>
+</head>
+<body>
+  <canvas id="myCanvas" height="300" width="400" style="border:1px solid black"></canvas>
+<script id="jsbin-javascript">
+var canvas = document.getElementById('myCanvas');
+var context = canvas.getContext('2d');
+
+var side=0;
+var size = 40;
+var x = 200;
+var y = 70;
+var a = 35;
+
+
+for (var i=1; i<8 ;i++){
+  context.beginPath();
+  context.moveTo(x + size * Math.cos(side), y + size * Math.sin(side));
+
+  for (side; side < 7; side++) {
+    context.lineTo(x + size * Math.cos(side * Math.PI / 3), y + size * Math.sin(side * Math.PI / 3));
+  }
+  context.strokeStyle = 'orange';
+  context.stroke();
+  side = 0;
+  if (i%3===0){
+    x -= 2*a;
+    y += a+a/7;
+  } else if (i%3 === 1){
+    y += a+a/7;
+    x -= 2*a;
+  } else if (i%3 ===2){
+    x += 4*a;
+  }
+  if (i===6){
+    context.fillStyle = 'orange';
+    context.fill();
+  }
+}
+</script>
+</body>
+</html>
